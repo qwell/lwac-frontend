@@ -69,6 +69,10 @@ class PwnedForm extends React.Component<IProps, IState> {
   handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (!evalidator.validate(this.state.email)) {
+      return;
+    }
+
     this.getBreaches(this.state.email).then((list) => {
       // Display the breaches.
       this.setState({ breaches: list });
@@ -76,10 +80,6 @@ class PwnedForm extends React.Component<IProps, IState> {
   };
 
   handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!evalidator.validate(event.target.value)) {
-      return;
-    }
-
     this.setState({ email: event.target.value });
   };
 

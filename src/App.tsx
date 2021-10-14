@@ -77,7 +77,6 @@ class PwnedForm extends React.Component<IProps, IState> {
 
   handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!evalidator.validate(event.target.value)) {
-      this.setState({ breaches: [] });
       return;
     }
 
@@ -100,12 +99,7 @@ class PwnedForm extends React.Component<IProps, IState> {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="text"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
+        <input id="email" type="text" onChange={this.handleChange} />
         <button type="submit">Submit</button>
         <Styles>
           <Table columns={columns} data={this.state.breaches} />

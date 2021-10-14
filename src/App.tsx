@@ -70,6 +70,7 @@ class PwnedForm extends React.Component<IProps, IState> {
     event.preventDefault();
 
     if (!evalidator.validate(this.state.email)) {
+      this.setState({ breaches: [] });
       return;
     }
 
